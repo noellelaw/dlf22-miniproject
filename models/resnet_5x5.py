@@ -45,7 +45,7 @@ class Bottleneck(nn.Module):
         super(Bottleneck, self).__init__()
         self.conv1 = nn.Conv2d(in_planes, planes, kernel_size=1, bias=False)
         self.bn1 = nn.BatchNorm2d(planes)
-        self.conv2 = nn.Conv2d(planes, planes, kernel_size=3,
+        self.conv2 = nn.Conv2d(planes, planes, kernel_size=5,
                                stride=stride, padding=1, bias=False)
         self.bn2 = nn.BatchNorm2d(planes)
         self.conv3 = nn.Conv2d(planes, self.expansion *
@@ -74,7 +74,7 @@ class ResNet(nn.Module):
         super(ResNet, self).__init__()
         self.in_planes = 64
 
-        self.conv1 = nn.Conv2d(3, 64, kernel_size=3,
+        self.conv1 = nn.Conv2d(3, 64, kernel_size=5,
                                stride=1, padding=1, bias=False)
         self.bn1 = nn.BatchNorm2d(64)
         self.layer1 = self._make_layer(block, 64, num_blocks[0], stride=1)
@@ -103,27 +103,11 @@ class ResNet(nn.Module):
         return out
 
 
-def ResNet18():
-    return ResNet(BasicBlock, [2, 2, 2, 2])
 
-
-def ResNet34():
-    return ResNet(BasicBlock, [3, 4, 6, 3])
-
-
-def ResNet50():
-    return ResNet(Bottleneck, [3, 4, 6, 3])
-
-
-def ResNet101():
-    return ResNet(Bottleneck, [3, 4, 23, 3])
-
-
-def ResNet152():
-    return ResNet(Bottleneck, [3, 8, 36, 3])
-
+def ResNet10():
+    return ResNet(BasicBlock, [1, 1, 1, 1])
 
 def test():
-    net = ResNet18()
+    net = ResNet10()
     y = net(torch.randn(1, 3, 32, 32))
     print(y.size())
