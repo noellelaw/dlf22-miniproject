@@ -1,6 +1,6 @@
 '''ResNet in PyTorch.
-Tests how changing kernel size of ith layer skip connection impacts accuracy on 3-layer
-Resnet.
+Tests how changing kernel size of ith layer skip connection to 3
+impacts accuracy on 3-layer ResNet.
 Reference:
 [1] Kaiming He, Xiangyu Zhang, Shaoqing Ren, Jian Sun
     Deep Residual Learning for Image Recognition. arXiv:1512.03385
@@ -106,7 +106,7 @@ def ResNet26():
     return ResNet(BasicBlock, [4, 6, 2])
 
 
-def ResNet30():
+def ResNet34():
     return ResNet(BasicBlock, [8, 6, 2])
 
 def test():
