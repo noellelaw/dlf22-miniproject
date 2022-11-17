@@ -105,7 +105,7 @@ def ResNet26():
     return ResNet(BasicBlock, [4, 5, 3])
 
 
-def ResNet32():
+def ResNet38():
     return ResNet(BasicBlock, [8, 8, 2])
 
 def test():
