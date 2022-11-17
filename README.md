@@ -2,6 +2,8 @@
 
 Goal: Identify a modified residual network architecture to achieve highest test accuracy on CIFAR-10, with no more than 5 million trainable parameters.
 
+Access training notebook here: https://colab.research.google.com/drive/140wivCC7Htwe_QRP1jMfluBxYrwR7SX7?usp=sharing.
+
 The code base is adapted from: https://github.com/kuangliu/pytorch-cifar. 
 
 The following models can be found for training:
