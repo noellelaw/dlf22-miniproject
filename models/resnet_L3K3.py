@@ -1,9 +1,10 @@
 '''ResNet in PyTorch.
-For Pre-activation ResNet, see 'preact_resnet.py'.
+Tests how changing kernel size of ith layer skip connection impacts accuracy on 3-layer
+Resnet.
 Reference:
 [1] Kaiming He, Xiangyu Zhang, Shaoqing Ren, Jian Sun
     Deep Residual Learning for Image Recognition. arXiv:1512.03385
-Code from: https://github.com/kuangliu/pytorch-cifar/blob/master/models/resnet.py
+Code adapted from: https://github.com/kuangliu/pytorch-cifar/blob/master/models/resnet.py
 '''
 import torch
 import torch.nn as nn
@@ -26,7 +27,7 @@ class BasicBlock(nn.Module):
         if stride != 1 or in_planes != self.expansion*planes:
             self.shortcut = nn.Sequential(
                 nn.Conv2d(in_planes, self.expansion*planes,
-                          kernel_size=3, stride=stride, bias=False),
+                          kernel_size=3, stride=stride, padding=1, bias=False),
                 nn.BatchNorm2d(self.expansion*planes)
             )
 
@@ -56,7 +57,7 @@ class Bottleneck(nn.Module):
         if stride != 1 or in_planes != self.expansion*planes:
             self.shortcut = nn.Sequential(
                 nn.Conv2d(in_planes, self.expansion*planes,
-                          kernel_size=1, stride=stride, bias=False),
+                          kernel_size=3, stride=stride, bias=False),
                 nn.BatchNorm2d(self.expansion*planes)
             )
 
@@ -102,11 +103,11 @@ class ResNet(nn.Module):
 
 
 def ResNet26():
-    return ResNet(BasicBlock, [4, 5, 3])
+    return ResNet(BasicBlock, [4, 6, 2])
 
 
-def ResNet38():
-    return ResNet(BasicBlock, [8, 8, 2])
+def ResNet30():
+    return ResNet(BasicBlock, [8, 6, 2])
 
 def test():
     net = ResNet26()

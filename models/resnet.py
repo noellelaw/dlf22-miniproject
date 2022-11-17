@@ -1,5 +1,5 @@
 '''ResNet in PyTorch.
-For Pre-activation ResNet, see 'preact_resnet.py'.
+Tests how number of blocks in ith ResNet layer impacts ResNet accuracy.
 Reference:
 [1] Kaiming He, Xiangyu Zhang, Shaoqing Ren, Jian Sun
     Deep Residual Learning for Image Recognition. arXiv:1512.03385

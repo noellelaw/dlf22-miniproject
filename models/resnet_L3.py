@@ -1,5 +1,5 @@
 '''ResNet in PyTorch.
-For Pre-activation ResNet, see 'preact_resnet.py'.
+Tests how changing channel size of ith layer impacts accuracy on 3-layer ResNet.
 Reference:
 [1] Kaiming He, Xiangyu Zhang, Shaoqing Ren, Jian Sun
     Deep Residual Learning for Image Recognition. arXiv:1512.03385
@@ -103,6 +103,10 @@ class ResNet(nn.Module):
 
 def ResNet26():
     return ResNet(BasicBlock, [4, 5, 3])
+
+
+def ResNet34():
+    return ResNet(BasicBlock, [8, 6, 2])
 
 
 def ResNet38():

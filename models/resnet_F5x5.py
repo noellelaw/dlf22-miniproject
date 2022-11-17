@@ -1,5 +1,6 @@
 '''ResNet in PyTorch.
-For Pre-activation ResNet, see 'preact_resnet.py'.
+Tests how adding additional context through 5x5 filters on the ith layer impacts 
+ResNet accuracy.
 Reference:
 [1] Kaiming He, Xiangyu Zhang, Shaoqing Ren, Jian Sun
     Deep Residual Learning for Image Recognition. arXiv:1512.03385
